@@ -6,12 +6,16 @@
 
 > .\app\globals.css //--------------// Arquivo principal do CSS. 
 
+> .\app\loading.tsx //--------------// Arquivo de carregamento onde renderiza uma skeleton screen para criar uma tela de carregamento
+
+> .\app\not-found.tsx //--------------// Arquivo de carregamento onde renderiza uma skeleton screen para criar uma tela de carregamento
+
     [URL ->  .../dashboard] - Exemplo de subdiretório:
         > .src\app\dashboard\page.tsx
         > .src\app\dashboard\layout.tsx
         > .src\app\dashboard\globals.css
-
-> .\app\loading.tsx //--------------// Arquivo de carregamento onde renderiza uma skeleton screen para criar uma tela de carregamento
+        > .src\app\dashboard\loading.tsx
+        > .src\app\dashboard\not-found.tsx
 
 > .\app\api\route.ts //--------------// Arquivo de rota de API. Nele, são separados os métodos RESTFUL e respostas da api. Podem ser adicionados na raíz [.src/app/api/...] ou em subdiretórios
 
@@ -44,6 +48,8 @@
             .\src\app\dashboard\globals.css //--------------// Arquivo de layout do diretório Dashboard
 
             .\src\app\dashboard\loading.tsx  //--------------// Arquivo de página de carregamento do diretório Dashboard
+
+            .\src\app\dashboard\not-found.tsx  //--------------// Arquivo de página 404 não encontrada do diretório Dashboard
    
     [databases] --> .\src\app\databases\... //--------------// Diretório das configurações do banco de dados local
 
