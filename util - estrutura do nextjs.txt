@@ -18,39 +18,54 @@
 
 --------------------------------- DIRETÓRIOS DO PROJETO E COMPONENTES ------------------------------------
 
+> .\.next\... //--------------// Diretório dos arquivos de deploy do projeto após o buid
+
 > .\public\... //--------------// Diretório dos assets da aplicação, icones, imagens, etc.
 
 > .\src\app\... //--------------// Diretório dos códigos fonte do projeto
 
-    [@types] --> .\src\@types\... //--------------// Diretório das configurações das extensões de arquivos de imagem
+    [API] --> .\src\app\api\... //--------------// Diretório dos arquivos da API
 
-        .\src\@types\navigation.d.ts //--------------// Configuração dos tipos das rotas 
-        .\src\@types\png.d.ts //--------------// Configuração do tipo de imagem png
+            [URL] -> .../api
+            .\src\app\api\route.ts //--------------// Arquivo raíz do diretório da API
+
+            [URL] -> .../api/hello
+            .\src\app\api\hello\route.ts //--------------// Arquivo  do subdiretório da API
+
+    [dashboard] --> .\src\app\dashboard\... //--------------// Diretório de subdomínio Dashboard do app
+
+            [URL] -> .../dashboard
+            .\src\app\dashboard\page.tsx //--------------// Arquivo da página do diretório Dashboard
+
+            .\src\app\dashboard\layout.tsx //--------------// Arquivo de layout do diretório Dashboard
+
+            .\src\app\dashboard\globals.css //--------------// Arquivo de layout do diretório Dashboard
+   
+   
+    [databases] --> .\src\app\databases\... //--------------// Diretório das configurações do banco de dados local
+
+        .\src\app\databases\index.ts //--------------// Arquivo de conexão com o banco de dados local
+
+        .\src\app\databases\models\... //--------------// Diretório das models
+
+        .\src\app\databases\schemes\... //--------------// Diretório dos schemas do banco de dados local, que são usados para criar as tabelas
+
+            .\src\app\databases\schemes\index.ts //--------------// Arquivo de configuração para criação do banco
     
-    [databases] --> .\src\databases\... //--------------// Diretório das configurações do banco de dados local
+    [routes] --> .\src\app\routes\... //--------------// Diretório criado manualmente para as rotas
 
-        .\src\databases\index.ts //--------------// Arquivo de conexão com o banco de dados local
+    [components] --> .\src\app\components\... //--------------// Diretório criado manualmente para os componentes 
 
-        .\src\databases\models\... //--------------// Diretório das models
+    [screens] --> .\src\app\screens\... //--------------// Diretório criado manualmente para as telas 
 
-        .\src\databases\schemes\... //--------------// Diretório dos schemas do banco de dados local, que são usados para criar as tabelas
+    [services] --> .\src\app\services\... //--------------// Diretório criado manualmente dos serviços do projeto
 
-            .\src\databases\schemes\index.ts //--------------// Arquivo de configuração para criação do banco
-    
-    [routes] --> .\src\routes\... //--------------// Diretório criado manualmente para as rotas
+    [theme] --> .\src\app\theme\... //--------------// Diretório criado manualmente para configuração dos tokens de design do tema do aplicativo, como as fontes e cores padrões
 
-    [components] --> .\src\components\... //--------------// Diretório criado manualmente para os componentes 
+        .\src\app\theme\index.ts  //--------------//  Definição dos tokens de stilo
+        .\src\app\theme\syteld.d.tx //--------------// Configuração do tema
 
-    [screens] --> .\src\screens\... //--------------// Diretório criado manualmente para as telas 
-
-    [services] --> .\src\services\... //--------------// Diretório criado manualmente dos serviços do projeto
-
-    [theme] --> .\src\theme\... //--------------// Diretório criado manualmente para configuração dos tokens de design do tema do aplicativo, como as fontes e cores padrões
-
-        .\src\theme\index.ts  //--------------//  Definição dos tokens de stilo
-        .\src\theme\syteld.d.tx //--------------// Configuração do tema
-
-    [assets] --> .\src\assets\... //--------------// Diretório criado manualmente dos assets específicos do projeto, icones, imagens, etc.
+    [assets] --> .\src\app\assets\... //--------------// Diretório criado manualmente dos assets específicos do projeto, icones, imagens, etc.
 
 --------------------------------- ARQUIVOS DE CONFIGURAÇÃO NEXT JS ------------------------------------
 

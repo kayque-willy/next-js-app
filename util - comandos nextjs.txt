@@ -2,6 +2,10 @@
 
 > $  npx create-next-app@latest name-app //--------------// Criação de um novo projeto Next.js.
 
+------------------------------------------INSTALAÇÃO - [CLI]-----------------------------------------------
+
+> $  npx next -h //--------------// Instalação do Next CLI, para build do projeto 
+
 ---------------------------------INSTALAÇÃO - [STYLED COMPONENTES E TIPAGEM]--------------------------------
 
 > $  npm install --save styled-components //--------------// Instalação do styled-components para CSS
@@ -64,7 +68,7 @@
 
 ----------------------------------------------COMPILAÇÃO----------------------------------------------------
 
-> $ next build //--------------// Exporta o projeto compilado para execução web
+> $ npx next build --profile  //--------------// Exporta o projeto compilado para execução web em produção
 
 ----------------------------------------------EXECUÇÃO----------------------------------------------------
 
