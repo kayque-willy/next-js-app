@@ -11,6 +11,8 @@
         > .src\app\dashboard\layout.tsx
         > .src\app\dashboard\globals.css
 
+> .\app\loading.tsx //--------------// Arquivo de carregamento onde renderiza uma skeleton screen para criar uma tela de carregamento
+
 > .\app\api\route.ts //--------------// Arquivo de rota de API. Nele, são separados os métodos RESTFUL e respostas da api. Podem ser adicionados na raíz [.src/app/api/...] ou em subdiretórios
 
     [URL -> .../api/hello] - Exemplo de subdiretório: 
@@ -40,7 +42,8 @@
             .\src\app\dashboard\layout.tsx //--------------// Arquivo de layout do diretório Dashboard
 
             .\src\app\dashboard\globals.css //--------------// Arquivo de layout do diretório Dashboard
-   
+
+            .\src\app\dashboard\loading.tsx  //--------------// Arquivo de página de carregamento do diretório Dashboard
    
     [databases] --> .\src\app\databases\... //--------------// Diretório das configurações do banco de dados local
 
