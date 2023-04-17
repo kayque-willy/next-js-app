@@ -4,6 +4,7 @@
 
 html {
   scroll-behavior: smooth;
+  background-color: #edeef2;
 }
 
 body {
@@ -14,6 +15,18 @@ body {
 h1,
 h2 {
   font-weight: bold;
+  text-shadow: 2px 2px #f9f9f9;
+}
+
+h1 {
+  margin-top: 15%;
+  font-size: 2em;
+}
+
+h2 {
+  margin-bottom: 5%;
+  margin-top: 5%;
+  font-size: 1.3em;
 }
 
 a {
