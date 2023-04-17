@@ -10,3 +10,12 @@ body {
   text-align: center;
   align-items: center;
 }
+
+h1,
+h2 {
+  font-weight: bold;
+}
+
+a {
+  color: blue;
+}

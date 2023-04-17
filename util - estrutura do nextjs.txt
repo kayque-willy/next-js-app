@@ -1,12 +1,26 @@
---------------------------------- ARQUIVOS IMPORTANTES REACT NATIVE ------------------------------------
+--------------------------------------- ARQUIVOS IMPORTANTES NEXT.JS ---------------------------------------
 
-> .\App.tsx //--------------// Arquivo principal onde é executado o projeto
+> .\app\page.tsx //--------------// Arquivo principal das páginas. Todos os arquivos page.tsx, independente de qual diretório estiverem, se tornarão páginas renderizadas.
+
+> .\app\layout.tsx //--------------// Arquivo principal dos layoutes externos páginas. Existe um layout principal na raíz [.src/app/...], mas podem ser criados outros para subpáginas. 
+
+> .\app\globals.css //--------------// Arquivo principal do CSS. 
+
+    [URL ->  .../dashboard] - Exemplo de subdiretório:
+        > .src\app\dashboard\page.tsx
+        > .src\app\dashboard\layout.tsx
+        > .src\app\dashboard\globals.css
+
+> .\app\api\route.ts //--------------// Arquivo de rota de API. Nele, são separados os métodos RESTFUL e respostas da api. Podem ser adicionados na raíz [.src/app/api/...] ou em subdiretórios
+
+    [URL -> .../api/hello] - Exemplo de subdiretório: 
+        > .src\app\api\hello\route.ts
 
 --------------------------------- DIRETÓRIOS DO PROJETO E COMPONENTES ------------------------------------
 
-> .\assets\... //--------------// Diretório dos assets da aplicação, icones, imagens, etc.
+> .\public\... //--------------// Diretório dos assets da aplicação, icones, imagens, etc.
 
-> .\src\... //--------------// Diretório criado manualmente para os códigos fonte do projeto
+> .\src\app\... //--------------// Diretório dos códigos fonte do projeto
 
     [@types] --> .\src\@types\... //--------------// Diretório das configurações das extensões de arquivos de imagem
 
@@ -38,14 +52,9 @@
 
     [assets] --> .\src\assets\... //--------------// Diretório criado manualmente dos assets específicos do projeto, icones, imagens, etc.
 
---------------------------------- ARQUIVOS DE CONFIGURAÇÃO REACT NATIVE ------------------------------------
+--------------------------------- ARQUIVOS DE CONFIGURAÇÃO NEXT JS ------------------------------------
 
-> .\App.json //--------------// Configuração do projeto
-
-    expo = [...] //--------------// Componentes gereais do EXPO, icones, nome da label, OS de execução, etc
-    splash = [...], ios = [...], android = [...] //--------------// Demais configurações
-
-> .\babel.config.js //--------------// Configuração dos plugins
+> .\next.config.js //--------------// Configuração do projeto
 
 --------------------------------------- CONFIGURAÇÃO DOS PACOTES NPM -----------------------------------------
 

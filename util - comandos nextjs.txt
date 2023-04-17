@@ -2,12 +2,6 @@
 
 > $  npx create-next-app@latest name-app //--------------// Criação de um novo projeto Next.js.
 
-------------------------------------------INSTALAÇÃO - [CLI]-----------------------------------------------
-
-> $  npm install -g expo-cli //--------------// Instalação do Expo Go , para depuração e execução remota 
-
-> $  npm install -g eas-cli //--------------// Instalação do EAS para compilação 
-
 ---------------------------------INSTALAÇÃO - [STYLED COMPONENTES E TIPAGEM]--------------------------------
 
 > $  npm install --save styled-components //--------------// Instalação do styled-components para CSS
@@ -51,44 +45,26 @@
     [Draw] (Barra lateral)
     > $  npm install @react-navigation/drawer //--------------// Instalação das dependencias de complemento para a a react navigate
 
-----------------------------------------INSTALAÇÃO - [BANCO DE DADOS - SQLITE]------------------------------------------
+----------------------------------------INSTALAÇÃO - [BANCO DE DADOS - ]------------------------------------------
 
-> $ npm install @nozbe/watermelondb //--------------// Instalação do sgbd watermelondb para banco de dados local sqlite
-
-    [WATERMELONDB - DEPENDENCIAS OBRIGATÓRIAS]
-
-    > $ npm install -D @babel/plugin-proposal-decorators //--------------// Plugin da sintaxe dos Decorators do SGBD
-    
-        [OBRIGATÓRIO - BABEL] -> ./babel.config.js
-            plugins: ['@babel/plugin-proposal-decorators'], //--------------// Obrigatório a adição do plugin do reanimated no Babel.config
+> $ npm install ... //--------------// Instalação do sgbd ... para banco de dados 
 
 ---------------------------INSTALAÇÃO DE DEPENDENCIAS PARA CONFIGURAÇÕES NATIVAS--------------------------
 
-> $  expo install @expo-google-fonts/roboto  //--------------// Instalação da fonte Roboto
+> $  npm install @expo-google-fonts/roboto  //--------------// Instalação da fonte Roboto
 
-> $  expo install expo-app-loading  //--------------// Instalação do app loading
+> $  npm install expo-app-loading  //--------------// Instalação do app loading
 
-> $  expo install react-native-reanimated  //--------------// Instalação do reanimated, que gerencia as animações, obrigatório para o react-drawer
+> $  npm install react-native-reanimated  //--------------// Instalação do reanimated, que gerencia as animações, obrigatório para o react-drawer
      
-     [OBRIGATÓRIO - BABEL] -> ./babel.config.js
-        plugins: ['react-native-reanimated/plugin'], //--------------// Obrigatório a adição do plugin do reanimated no Babel.config
-
-     [OBRIGATÓRIO - GRADLE] -> ./android/build.gradle
-       kotlin_version = '1.5.20' 
-       kotlinVersion = '1.5.20'  //--------------// Obrigatório a adição da versão do kotlin no build.gradle
-
-> $  expo install react-native-gesture-handler  //--------------// Instalação do gestle handler, que gerencias os gestos, obrigatório para o react-drawer
+> $  npm install react-native-gesture-handler  //--------------// Instalação do gestle handler, que gerencias os gestos, obrigatório para o react-drawer
 
      [OBRIGATÓRIO - VIEW] -> ./App.tsx
         Adição do <GestureHandlerRootView> na View //--------------// Obrigatório a adição do plugin do reanimated no Babel.config
 
 ----------------------------------------------COMPILAÇÃO----------------------------------------------------
 
-> $ npx expo build:web //--------------// Exporta o projeto compilado para execução web
-
-> $ eas build --platform android //--------------// Exporta o projeto compilado para android
-
-> $ eas build --platform ios //--------------// Exporta o projeto compilado IOS
+> $ next build //--------------// Exporta o projeto compilado para execução web
 
 ----------------------------------------------EXECUÇÃO----------------------------------------------------
 
