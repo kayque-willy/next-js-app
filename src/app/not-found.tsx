@@ -6,6 +6,7 @@ const NotFoundPage = () => {
             <div>
                 <h1>404 - Não encontrado</h1>
                 <p>Desculpe, não há nada aqui</p>
+                <Link href="">Voltar</Link>
             </div>
         </>
     );

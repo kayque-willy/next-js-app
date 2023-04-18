@@ -1,9 +1,9 @@
 import Link from "next/link";
 
-export default function Types() {
+export default function Type() {
     return (
         <div>
-            <p>Types page</p>
+            <p>Type page</p>
             <Link href="/">Home</Link>
         </div>
     )

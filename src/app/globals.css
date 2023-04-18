@@ -32,3 +32,8 @@ h2 {
 a {
   color: blue;
 }
+
+pre,
+p {
+  text-align: justify;
+}
