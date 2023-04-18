@@ -43,3 +43,19 @@ button {
   padding: 2%;
   color: white;
 }
+
+.digimon-card {
+  border-color: black;
+  margin: 1%;
+  display: flex;
+  flex-direction: column;
+  width: 45%;
+  align-items: center;
+  border-width: 1px;
+  border-style: solid;
+}
+
+section.card-list {
+  flex-wrap: wrap;
+  display: flex;
+}

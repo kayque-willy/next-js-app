@@ -32,14 +32,26 @@ export default async function Home() {
           </pre>
         </Suspense>
 
-        <Suspense fallback={
-          <p>Carregando Digimimons...</p>}>
-          <pre>
-            {JSON.stringify(digimons, null, 2)}
-          </pre>
-        </Suspense>
+        <section className="card-list">
+          <Suspense fallback={
+            <p>Carregando Digimimons...</p>}>
+            {digimons.content.map((digimon: any) => {
+              return (
+                <>
+                  <article className="digimon-card">
+                    <h3>[{digimon.id} ] - {digimon.name}</h3>
+                    <img src={digimon.image} alt={digimon.name} width={100} />
+                    <a href={digimon.href}>{digimon.href}</a>
+                  </article>
+                </>
+              );
+            })}
+            {digimons.length === 0 && <span>Sem Digimons!</span>}
+          </Suspense>
+        </section>
 
         <br></br>
+
         <Link href="/api/hello">API</Link>
       </div>
     </section>
