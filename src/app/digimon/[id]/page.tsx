@@ -9,7 +9,7 @@ interface PageProps {
 export default function DigimonPage({ params }: PageProps) {
     return (
         <div>
-            <h1>Digimon: {params.id}</h1>
+            <h1>Digimon ID: {params.id}</h1>
             {/* @ts-expect-error */}
             <Digimon id={params.id} />
         </div>

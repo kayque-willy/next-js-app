@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { Suspense } from "react";
 
 export default async function Home() {
   const [responseDigimons, responseTypes] = await Promise.all([
@@ -19,15 +20,23 @@ export default async function Home() {
       <div>
         <h2>Digimon</h2>
         <Link href="/digimon/type">Types</Link>
-        <pre>
-          {JSON.stringify(types.content.fields, null, 2)}
-        </pre>
+        <Suspense fallback={
+          <p>Carregando Tipos...</p>}>
+          <pre>
+            {JSON.stringify(types.content.fields, null, 2)}
+          </pre>
+        </Suspense>
+
+        <Suspense fallback={
+          <p>Carregando Digimimons...</p>}>
+          <pre>
+            {JSON.stringify(digimons, null, 2)}
+          </pre>
+        </Suspense>
+
         <br></br>
         <Link href="/api/hello">API</Link>
       </div>
-      <pre>
-        {JSON.stringify(digimons, null, 2)}
-      </pre>
     </section>
   )
 }
