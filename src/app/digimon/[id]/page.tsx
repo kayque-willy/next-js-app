@@ -6,6 +6,8 @@ interface PageProps {
     }
 }
 
+// [λ  (Server)  server] - side renders at runtime 
+// uses [getInitialProps] or [getServerSideProps]
 export default function DigimonPage({ params }: PageProps) {
     return (
         <div>

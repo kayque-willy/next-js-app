@@ -59,17 +59,12 @@
 
 > $  npm install expo-app-loading  //--------------// Instalação do app loading
 
-> $  npm install react-native-reanimated  //--------------// Instalação do reanimated, que gerencia as animações, obrigatório para o react-drawer
-     
-> $  npm install react-native-gesture-handler  //--------------// Instalação do gestle handler, que gerencias os gestos, obrigatório para o react-drawer
-
-     [OBRIGATÓRIO - VIEW] -> ./App.tsx
-        Adição do <GestureHandlerRootView> na View //--------------// Obrigatório a adição do plugin do reanimated no Babel.config
-
 ----------------------------------------------COMPILAÇÃO----------------------------------------------------
 
 > $ npx next build --profile  //--------------// Exporta o projeto compilado para execução web em produção
 
 ----------------------------------------------EXECUÇÃO----------------------------------------------------
 
-> $  npm run dev //--------------// Executa o projeto
+> $  npm run dev //--------------// Executa o projeto em desenvolvimento
+
+> $  npm run build //--------------// Compila e executa a build do projeto

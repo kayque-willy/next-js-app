@@ -3,6 +3,8 @@
 
 import { useRouter } from "next/navigation";
 
+// [○  (Static)]  automatically rendered as static HTML 
+// uses no initial props
 async function Type() {
 
     // Roteamento
