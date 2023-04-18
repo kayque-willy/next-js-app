@@ -1,3 +1,4 @@
+//Essa página é renderizada no lado do cliente, por isso precisa da anotação "use cliente"
 "use client";
 
 import { useRouter } from "next/navigation";
