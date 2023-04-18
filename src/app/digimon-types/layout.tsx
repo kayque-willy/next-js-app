@@ -1,17 +1,17 @@
 
 export const metadata = {
-  title: 'Dashboard',
-  description: 'Dashboard Descrição',
+  title: 'Types',
+  description: 'Types Description',
 }
 
-export default function DashLayout({
+export default function TypesLayout({
   children,
 }: {
   children: React.ReactNode
 }) {
   return (
     <div>
-      <h2>Dashboard</h2>
+      <h2>Types</h2>
       {children}
     </div>
   )
