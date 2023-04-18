@@ -1,7 +1,12 @@
 import Link from "next/link";
 
 export default async function Home() {
-  const response = await fetch('https://www.digi-api.com/api/v1/digimon/?pageSize=30');
+  const response = await fetch('https://www.digi-api.com/api/v1/digimon/?pageSize=30', {
+    next: {
+      revalidate: 30
+    },
+    cache: "no-store"
+  });
   const digimons = await response.json();
   return (
     <section>
