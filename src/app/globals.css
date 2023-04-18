@@ -36,3 +36,10 @@ a {
 pre {
   text-align: justify;
 }
+
+button {
+  border-radius: 30px;
+  background: #0025d9;
+  padding: 2%;
+  color: white;
+}

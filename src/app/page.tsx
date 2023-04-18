@@ -2,6 +2,7 @@ import Link from "next/link";
 import { Suspense } from "react";
 
 export default async function Home() {
+  // Requisição à API
   const [responseDigimons, responseTypes] = await Promise.all([
     fetch('https://www.digi-api.com/api/v1/digimon/?pageSize=30', {
       next: {
@@ -13,13 +14,17 @@ export default async function Home() {
       cache: "no-store"
     })
   ]);
+
+  //Tratamento das requisições
   const digimons = await responseDigimons.json();
   const types = await responseTypes.json();
+
   return (
     <section>
       <div>
         <h2>Digimon</h2>
-        <Link href="/digimon/type">Types</Link>
+
+        <Link href="/type">Types</Link>
         <Suspense fallback={
           <p>Carregando Tipos...</p>}>
           <pre>
