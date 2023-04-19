@@ -38,11 +38,13 @@ export default async function Home() {
             {digimons.content.map((digimon: any) => {
               return (
                 <>
-                  <article className="digimon-card">
-                    <h3>[{digimon.id} ] - {digimon.name}</h3>
-                    <img src={digimon.image} alt={digimon.name} width={100} />
-                    <a href={digimon.href}>{digimon.href}</a>
-                  </article>
+                  <Link className="card-link" href={'digimon/' + digimon.id}>
+                    <article className="digimon-card">
+                      <h4>{digimon.id}</h4>
+                      <img src={digimon.image} alt={digimon.name} width={100} height={100} />
+                      <h3>{digimon.name}</h3>
+                    </article>
+                  </Link>
                 </>
               );
             })}

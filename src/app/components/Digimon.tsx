@@ -10,6 +10,12 @@ export async function Digimon({ id }: DigimonProps) {
     return (
         <section>
             <Link href="/">Voltar</Link>
+            {/* <div>
+                      <span>Level</span>
+                      {digimon.levels.map((level: any) => {
+                        <span>{level.level}</span>
+                      })}
+                    </div> */}
             <pre>
                 {JSON.stringify(digimon, null, 2)}
             </pre>

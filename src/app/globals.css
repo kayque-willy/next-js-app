@@ -46,16 +46,22 @@ button {
 
 .digimon-card {
   border-color: black;
-  margin: 1%;
+  margin: 3%;
   display: flex;
   flex-direction: column;
-  width: 45%;
+  min-width: 30%;
   align-items: center;
   border-width: 1px;
   border-style: solid;
 }
 
-section.card-list {
+.card-list {
+  /* Atributos para deixar a lista de cards alinhada e responsiva */
   flex-wrap: wrap;
   display: flex;
+  justify-content: center;
+}
+
+a.card-link {
+  min-width: 30%;
 }
