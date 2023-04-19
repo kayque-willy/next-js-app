@@ -13,8 +13,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        <h1>Next.js - App</h1>
-        <h2>Digimon</h2>
+        <header>
+          <h1>Next.js - App</h1>
+          <h2>Digimon</h2>
+        </header>
         {children}
         <footer> © 2023 - Author: <a href="https://github.com/kayque-willy">Kayque Oliveira</a></footer>
       </body>

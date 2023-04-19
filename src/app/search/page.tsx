@@ -4,19 +4,23 @@ import Link from "next/link"
 interface PageProps {
     // Recupera os parâmetros digitados na URL
     params: {
-        id: number
-    }
+        name: string
+    },
+    // Recupera os parâmetros enviados por GET
+    searchParams: {
+        search: string;
+    };
 }
 
 // [λ  (Server)  server] - side renders at runtime uses [getInitialProps] or [getServerSideProps]
-export default function DigimonPage({ params }: PageProps) {
+export default function Search({ searchParams }: PageProps) {
 
     // ------------------------- Renderização da página -------------------------
     return (
         <div>
-            <h2>Digimon ID: {params.id}</h2>
+            <h2>Digimon Name: {searchParams.search}</h2>
             {/* @ts-expect-error */}
-            <Digimon param={params.id} />
+            <Digimon param={searchParams.search} />
         </div>
     )
 }

@@ -24,9 +24,9 @@ h1 {
 }
 
 h2 {
-  margin-bottom: 5%;
+  margin-bottom: 3%;
   margin-top: 5%;
-  font-size: 1.3em;
+  font-size: 1.5em;
 }
 
 a {
@@ -39,9 +39,12 @@ pre {
 
 button {
   border-radius: 30px;
-  background: #0025d9;
-  padding: 2%;
+  background: #0025d9 !important;
+  padding: 1%;
   color: white;
+  margin-top: 1%;
+  margin-bottom: 2%;
+  min-width: 25%;
 }
 
 .digimon-card {
@@ -64,4 +67,17 @@ button {
 
 a.card-link {
   min-width: 30%;
+}
+
+.header-search {
+  display: flex;
+  justify-content: center;
+}
+
+.input-search {
+  width: 30em;
+  border-radius: 30px;
+  height: 2.2em;
+  margin-bottom: 2%;
+  text-align: center;
 }
