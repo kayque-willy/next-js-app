@@ -10,7 +10,7 @@ export default function TypesLayout({
 }) {
   return (
     <div>
-      <h2>Types</h2>
+      <h2>Níveis</h2>
       {children}
     </div>
   )

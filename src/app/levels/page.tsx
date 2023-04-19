@@ -3,8 +3,7 @@
 
 import { useRouter } from "next/navigation";
 
-// [○  (Static)]  automatically rendered as static HTML 
-// uses no initial props
+// [○  (Static)]  automatically rendered as static HTML uses no initial props
 async function Type() {
 
     // Roteamento
@@ -19,6 +18,7 @@ async function Type() {
         router.push('/');
     }
 
+    // ------------------------- Renderização da página -------------------------
     return (
         <div>
             <button onClick={backHome}>Voltar</button>

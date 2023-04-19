@@ -19,22 +19,27 @@ export default async function Home() {
   const digimons = await responseDigimons.json();
   const types = await responseTypes.json();
 
+  // ------------------------- Renderização da página -------------------------
   return (
     <section>
       <div>
         <h2>Digimon</h2>
 
-        <Link href="/type">Types</Link>
-        <Suspense fallback={
-          <p>Carregando Tipos...</p>}>
-          <pre>
-            {JSON.stringify(types.content.fields, null, 2)}
-          </pre>
-        </Suspense>
-
+        <nav>
+          <Link href="/levels">
+            <h3>Níveis</h3>
+          </Link>
+          <Suspense fallback={
+            <p>Carregando Niveis...</p>}>
+            <pre>
+              {JSON.stringify(types.content.fields, null, 2)}
+            </pre>
+          </Suspense>
+        </nav>
         <section className="card-list">
           <Suspense fallback={
-            <p>Carregando Digimimons...</p>}>
+            <p>Carregando Digimons...</p>}>
+            {digimons.length === 0 && <span>Sem Digimons!</span>}
             {digimons.content.map((digimon: any) => {
               return (
                 <>
@@ -48,13 +53,12 @@ export default async function Home() {
                 </>
               );
             })}
-            {digimons.length === 0 && <span>Sem Digimons!</span>}
           </Suspense>
         </section>
 
         <br></br>
 
-        <Link href="/api/hello">API</Link>
+        <Link href="/api/hello">API - Call Example</Link>
       </div>
     </section>
   )
