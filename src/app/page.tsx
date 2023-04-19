@@ -2,14 +2,27 @@
 "use client";
 
 import Link from "next/link";
-import { Suspense, useState } from "react";
+import { Suspense, useEffect, useState } from "react";
+import { Card, CardProps } from "./components/Card";
+import { Header } from "./components/Header";
 
 async function Home() {
 
   // ---------------------------- Hooks ----------------------------
   //[useState] - Adiciona o conteúdo no datasource para renderização
-  const [dataSource, setDataSource] = useState<any[]>([]);
+  const [dataSource, setDataSource] = useState<CardProps[]>([]);
   const [page, setPage] = useState(0);
+
+  // useEffect(() => {
+  //   // declare the data fetching function
+  //   const fetchData = async () => {
+  //     const response = await fetch('https://www.digi-api.com/api/v1/digimon/?pageSize=30&page=' + page);
+  //     console.log("use effet");
+  //     let digimons = await response.json();
+  //   }
+  //   // call the function
+  //   fetchData().catch(console.error);
+  // }, []);
 
   // ----------------------- Requisição à API -----------------------
   const [response] = await Promise.all([
@@ -36,31 +49,15 @@ async function Home() {
   // ------------------------- Renderização da página -------------------------
   return (
     <main>
-      <section className="header-search">
-        <form action="/search">
-          <fieldset>
-            <input className="input-search" type="search" name="search" placeholder="Procure o digimon pelo nome..."
-            />
-          </fieldset>
-          <button type="submit" value="Submit">Buscar</button>
-        </form>
-      </section>
-
+      <Header />
       <section className="card-list">
         <Suspense
-          fallback={<span>Carregando Digimons...</span>}>
+          fallback={<span>Carregando Digimons...</span>}
+        >
           {digimons.length === 0 && <span>Sem Digimons!</span>}
-          {dataSource.map((digimon: any) => {
+          {dataSource.map((digimon: CardProps) => {
             return (
-              <>
-                <Link className="card-link" href={'digimon/' + digimon.id}>
-                  <article className="digimon-card">
-                    <h4>{digimon.id}</h4>
-                    <img src={digimon.image} alt={digimon.name} width={100} height={100} />
-                    <h3>{digimon.name}</h3>
-                  </article>
-                </Link>
-              </>
+              <><Card {...digimon} /></>
             );
           })}
         </Suspense>
