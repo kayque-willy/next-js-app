@@ -1,23 +1,36 @@
+//Essa página é renderizada no lado do cliente, por isso precisa da anotação "use cliente"
+"use client";
+
 import Link from "next/link";
-import { Suspense } from "react";
+import { Suspense, useEffect, useState } from "react";
 
-export default async function Home() {
+async function Home() {
+  // ---------------------------- Hooks ----------------------------
+  //[useState] - Adiciona o conteúdo no datasource para renderização
+  const [dataSource, setDataSource] = useState([]);
+  const [page, setPage] = useState(0);
 
-  // Requisição à API
-  const [responseDigimons] = await Promise.all([
-    fetch('https://www.digi-api.com/api/v1/digimon/?pageSize=30', {
-      next: {
-        revalidate: 30
-      },
+  // ----------------------- Requisição à API -----------------------
+  const [response] = await Promise.all([
+    fetch('https://www.digi-api.com/api/v1/digimon/?pageSize=30&page=' + page, {
+      // next: {
+      //   revalidate: 30
+      // },
       cache: "no-store"
     })
   ]);
 
-  //Tratamento das requisições
-  const digimons = await responseDigimons.json();
+  //Tratamento da requisição para JSON
+  var digimons = await response.json();
 
-  // Busca um digimon
-  async function submit() { }
+  // ------------------------- Funções -------------------------
+
+  // Carrega mais digimons
+  async function load() {
+    setPage(page + 1);
+    const combined = [].concat(dataSource, digimons.content);
+    setDataSource(combined);
+  }
 
   // ------------------------- Renderização da página -------------------------
   return (
@@ -25,11 +38,7 @@ export default async function Home() {
       <section className="header-search">
         <form action="/search">
           <fieldset>
-            <input
-              className="input-search"
-              type="search"
-              name="search"
-              placeholder="Procuro o digimon pelo nome..."
+            <input className="input-search" type="search" name="search" placeholder="Procure o digimon pelo nome..."
             />
           </fieldset>
           <button type="submit" value="Submit">Buscar</button>
@@ -40,7 +49,7 @@ export default async function Home() {
         <Suspense
           fallback={<span>Carregando Digimons...</span>}>
           {digimons.length === 0 && <span>Sem Digimons!</span>}
-          {digimons.content.map((digimon: any) => {
+          {dataSource.map((digimon: any) => {
             return (
               <>
                 <Link className="card-link" href={'digimon/' + digimon.id}>
@@ -54,9 +63,11 @@ export default async function Home() {
             );
           })}
         </Suspense>
+        <button onClick={load}>Carregar mais digimons</button>
       </section>
-
       <Link href="/api/hello">API - Call Example</Link>
     </main>
   )
 }
+
+export default Home;

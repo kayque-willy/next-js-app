@@ -1,5 +1,4 @@
-import { Digimon } from "@/app/components/Digimon"
-import Link from "next/link"
+import { Digimon } from "@/app/components/Digimon";
 
 interface PageProps {
     // Recupera os parâmetros digitados na URL
