@@ -2,12 +2,13 @@
 "use client";
 
 import Link from "next/link";
-import { Suspense, useEffect, useState } from "react";
+import { Suspense, useState } from "react";
 
 async function Home() {
+
   // ---------------------------- Hooks ----------------------------
   //[useState] - Adiciona o conteúdo no datasource para renderização
-  const [dataSource, setDataSource] = useState([]);
+  const [dataSource, setDataSource] = useState<any[]>([]);
   const [page, setPage] = useState(0);
 
   // ----------------------- Requisição à API -----------------------
@@ -20,16 +21,16 @@ async function Home() {
     })
   ]);
 
-  //Tratamento da requisição para JSON
-  var digimons = await response.json();
+  let digimons = await response.json();
 
   // ------------------------- Funções -------------------------
-
   // Carrega mais digimons
   async function load() {
     setPage(page + 1);
-    const combined = [].concat(dataSource, digimons.content);
-    setDataSource(combined);
+    console.log(page);
+    // const combined = [].concat(dataSource, digimons.content);
+    // setDataSource(combined);
+    setDataSource(dataSource => [...dataSource, ...digimons.content]);
   }
 
   // ------------------------- Renderização da página -------------------------
@@ -63,8 +64,10 @@ async function Home() {
             );
           })}
         </Suspense>
-        <button onClick={load}>Carregar mais digimons</button>
       </section>
+      <div>
+        <button onClick={load}>Carregar mais digimons</button>
+      </div>
       <Link href="/api/hello">API - Call Example</Link>
     </main>
   )
