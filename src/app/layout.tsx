@@ -13,7 +13,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        <header>
+        <header className="header">
           <h1>Next.js - App</h1>
           <h2>Digimon</h2>
         </header>
