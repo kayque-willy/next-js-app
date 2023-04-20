@@ -49,20 +49,19 @@ async function Home() {
   return (
     <main>
       <Header />
-      <section className="card-list">
-        <Suspense fallback={<span>Carregando Digimons...</span>}>
-          <>
-            {(dataSource.length > 0) ?
-              (<DataList {...dataSource} />)
-              :
-              (<DataList {...digimons.content} />)
-            }
-          </>
-        </Suspense>
-      </section>
+
+      <Suspense fallback={<span>Carregando Digimons...</span>}>
+        {(dataSource.length > 0) ?
+          (<DataList {...dataSource} />)
+          :
+          (<DataList {...digimons.content} />)
+        }
+      </Suspense>
+
       <div>
         <button onClick={load}>Carregar mais digimons</button>
       </div>
+
       <Link href="/api/hello">API - Call Example</Link>
     </main>
   )
