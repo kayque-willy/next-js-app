@@ -3,14 +3,14 @@
 
 import Link from "next/link";
 import { Suspense, useEffect, useState } from "react";
-import { Card, CardProps } from "./components/Card";
 import { Header } from "./components/Header";
+import { DataList, DigimonList } from "./components/DataList";
 
 async function Home() {
 
   // ---------------------------- Hooks ----------------------------
   //[useState] - Adiciona o conteúdo no datasource para renderização
-  const [dataSource, setDataSource] = useState<CardProps[]>([]);
+  const [dataSource, setDataSource] = useState<any[]>([]);
   const [page, setPage] = useState(0);
 
   // useEffect(() => {
@@ -40,7 +40,6 @@ async function Home() {
   // Carrega mais digimons
   async function load() {
     setPage(page + 1);
-    console.log(page);
     // const combined = [].concat(dataSource, digimons.content);
     // setDataSource(combined);
     setDataSource(dataSource => [...dataSource, ...digimons.content]);
@@ -51,15 +50,14 @@ async function Home() {
     <main>
       <Header />
       <section className="card-list">
-        <Suspense
-          fallback={<span>Carregando Digimons...</span>}
-        >
-          {digimons.length === 0 && <span>Sem Digimons!</span>}
-          {dataSource.map((digimon: CardProps) => {
-            return (
-              <><Card {...digimon} /></>
-            );
-          })}
+        <Suspense fallback={<span>Carregando Digimons...</span>}>
+          <>
+            {(dataSource.length > 0) ?
+              (<DataList {...dataSource} />)
+              :
+              (<DataList {...digimons.content} />)
+            }
+          </>
         </Suspense>
       </section>
       <div>
