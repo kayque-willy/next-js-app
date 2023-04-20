@@ -2,7 +2,7 @@
 "use client";
 
 import Link from "next/link";
-import { Suspense, useState } from "react";
+import { Suspense, useEffect, useState } from "react";
 import { Header } from "./components/Header";
 import { DataList } from "./components/DataList";
 
@@ -11,6 +11,15 @@ async function Home() {
   // ---------------------------- Hooks ----------------------------
   //[useState] - Adiciona o conteúdo no datasource para renderização
   const [pageSize, setPage] = useState(20);
+
+  // const [reactData, setReactData] = useState([]);
+  // useEffect(() => {
+  //   fetch('https://www.digi-api.com/api/v1/digimon/?pageSize=' + pageSize)
+  //     .then(res => res.json())
+  //     .then(data => {
+  //       setReactData(data);
+  //     }).catch((e) => { console.log(e) });
+  // }, []);
 
   // ----------------------- Requisição à API -----------------------
   const [response] = await Promise.all([
