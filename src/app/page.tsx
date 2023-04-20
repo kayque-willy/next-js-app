@@ -6,55 +6,55 @@ import { Suspense, useEffect, useState } from "react";
 import { Header } from "./components/Header";
 import { DataList } from "./components/DataList";
 
-async function Home() {
+function Home() {
 
   // ---------------------------- Hooks ----------------------------
   //[useState] - Adiciona o conteúdo no datasource para renderização
   const [pageSize, setPage] = useState(20);
-
-  // const [reactData, setReactData] = useState([]);
-  // useEffect(() => {
-  //   fetch('https://www.digi-api.com/api/v1/digimon/?pageSize=' + pageSize)
-  //     .then(res => res.json())
-  //     .then(data => {
-  //       setReactData(data);
-  //     }).catch((e) => { console.log(e) });
-  // }, []);
+  const [digimons, setDigimons] = useState([]);
 
   // ----------------------- Requisição à API -----------------------
-  const [response] = await Promise.all([
-    fetch('https://www.digi-api.com/api/v1/digimon/?pageSize=' + pageSize, {
-      // next: {
-      //   revalidate: 30
-      // },
-      cache: "default"
-    })
-  ]);
+  //[useEffect] - Adiciona o conteúdo no datasource para renderização
+  useEffect(() => {
+    console.log("useEffect");
+    fetch('https://www.digi-api.com/api/v1/digimon/?pageSize=' + pageSize)
+      .then(res => res.json())
+      .then(data => {
+        setDigimons(data.content);
+      }).catch((e) => { console.log(e) });
+  }, [pageSize]);
+  // Aqui é definido a lista de dependencias do [useEffect], no qual:
+  // }): o useEffect vai ser continuamente
+  // }, []): o useEffect vai ser executado uma unica vez
+  // }, [pageSize]): o useEffect vai ser executado a cada alteração das dependencias, no caso, a cada alteração da pageSize
 
-  let digimons = await response.json();
+  // const [response] = await Promise.all([
+  //   fetch('https://www.digi-api.com/api/v1/digimon/?pageSize=' + pageSize, {
+  //     // next: {
+  //     //   revalidate: 30
+  //     // },
+  //     cache: "default"
+  //   })
+  // ]);
+
+  // let digimons = await response.json();
 
   // ------------------------- Funções -------------------------
   // Carrega mais digimons
   async function load() {
     setPage(pageSize + 10);
-    // const combined = [].concat(dataSource, digimons.content);
-    // setDataSource(combined);
-    // setDataSource(dataSource => [...dataSource, ...digimons.content]);
   }
 
   // ------------------------- Renderização da página -------------------------
   return (
     <main>
       <Header />
-
       <Suspense fallback={<span>Carregando Digimons...</span>}>
-        <DataList {...digimons.content} />
+        <DataList {...digimons} />
       </Suspense>
-
       <div>
         <button onClick={load}>Carregar mais digimons</button>
       </div>
-
       <Link href="/api/hello">API - Call Example</Link>
     </main>
   )

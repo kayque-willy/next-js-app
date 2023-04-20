@@ -1,15 +1,16 @@
 "use client";
+
 import { useEffect, useState } from 'react'
 
 function Sample({ users }: any) {
     const [pageSize, setPage] = useState(20);
     const [reactData, setReactData] = useState([]);
     useEffect(() => {
-        console.log("useeffet");
-        fetch('https://jsonplaceholder.typicode.com/users')
+        console.log("useEffect");
+        fetch('https://www.digi-api.com/api/v1/digimon/?pageSize=' + pageSize)
             .then(res => res.json())
             .then(data => {
-                setReactData(data);
+                setReactData(data.content);
             }).catch((e) => { console.log(e) });
     }, [pageSize]);
     //Aqui é definido a lista de dependencias do useEffect, no qual:
@@ -27,11 +28,11 @@ function Sample({ users }: any) {
             <h1>Rendered By React JS | Client side rendered</h1>
             <section>
                 <ul>
-                    {reactData.map((user: any, index: number) => (
+                    {reactData.map((digimon: any, index: number) => (
                         <li key={index}>
-                            <span>{user.name}</span>
-                            <span>{user.username}</span>
-                            <span>{user.email}</span>
+                            <span>{digimon.id}</span>
+                            <span>{digimon.name}</span>
+                            <span>{digimon.image}</span>
                         </li>
 
                     ))}
