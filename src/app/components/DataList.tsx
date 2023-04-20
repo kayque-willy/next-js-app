@@ -12,8 +12,6 @@ export function DataList(digimons: DigimonList[]) {
     let sizeList = Object.keys(digimons).length;
     let dataList = [];
 
-    console.log("size " + sizeList);
-
     for (let i = 0; i < sizeList; i++) {
         dataList.push(digimons[i]);
     }

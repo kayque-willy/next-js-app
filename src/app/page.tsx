@@ -2,35 +2,23 @@
 "use client";
 
 import Link from "next/link";
-import { Suspense, useEffect, useState } from "react";
+import { Suspense, useState } from "react";
 import { Header } from "./components/Header";
-import { DataList, DigimonList } from "./components/DataList";
+import { DataList } from "./components/DataList";
 
 async function Home() {
 
   // ---------------------------- Hooks ----------------------------
   //[useState] - Adiciona o conteúdo no datasource para renderização
-  const [dataSource, setDataSource] = useState<any[]>([]);
-  const [page, setPage] = useState(0);
-
-  // useEffect(() => {
-  //   // declare the data fetching function
-  //   const fetchData = async () => {
-  //     const response = await fetch('https://www.digi-api.com/api/v1/digimon/?pageSize=30&page=' + page);
-  //     console.log("use effet");
-  //     let digimons = await response.json();
-  //   }
-  //   // call the function
-  //   fetchData().catch(console.error);
-  // }, []);
+  const [pageSize, setPage] = useState(20);
 
   // ----------------------- Requisição à API -----------------------
   const [response] = await Promise.all([
-    fetch('https://www.digi-api.com/api/v1/digimon/?pageSize=30&page=' + page, {
+    fetch('https://www.digi-api.com/api/v1/digimon/?pageSize=' + pageSize, {
       // next: {
       //   revalidate: 30
       // },
-      cache: "no-store"
+      cache: "default"
     })
   ]);
 
@@ -39,10 +27,10 @@ async function Home() {
   // ------------------------- Funções -------------------------
   // Carrega mais digimons
   async function load() {
-    setPage(page + 1);
+    setPage(pageSize + 10);
     // const combined = [].concat(dataSource, digimons.content);
     // setDataSource(combined);
-    setDataSource(dataSource => [...dataSource, ...digimons.content]);
+    // setDataSource(dataSource => [...dataSource, ...digimons.content]);
   }
 
   // ------------------------- Renderização da página -------------------------
@@ -51,11 +39,7 @@ async function Home() {
       <Header />
 
       <Suspense fallback={<span>Carregando Digimons...</span>}>
-        {(dataSource.length > 0) ?
-          (<DataList {...dataSource} />)
-          :
-          (<DataList {...digimons.content} />)
-        }
+        <DataList {...digimons.content} />
       </Suspense>
 
       <div>
