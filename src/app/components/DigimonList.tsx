@@ -8,7 +8,7 @@ export interface DigimonList {
 }
 
 // [λ  (Server)  server] - side renders at runtime uses [getInitialProps] or [getServerSideProps]
-export function DataList(digimons: DigimonList[]) {
+export function DigimonList(digimons: DigimonList[]) {
     let sizeList = Object.keys(digimons).length;
     let dataList = [];
 

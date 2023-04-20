@@ -4,7 +4,7 @@
 import Link from "next/link";
 import { Suspense, useEffect, useState } from "react";
 import { Header } from "./components/Header";
-import { DataList } from "./components/DataList";
+import { DigimonList } from "./components/DigimonList";
 
 function Home() {
 
@@ -12,15 +12,18 @@ function Home() {
   //[useState] - Adiciona o conteúdo no datasource para renderização
   const [pageSize, setPage] = useState(20);
   const [digimons, setDigimons] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
 
   // ----------------------- Requisição à API -----------------------
   //[useEffect] - Adiciona o conteúdo no datasource para renderização
   useEffect(() => {
     console.log("useEffect");
+    setIsLoading(true);
     fetch('https://www.digi-api.com/api/v1/digimon/?pageSize=' + pageSize)
       .then(res => res.json())
       .then(data => {
         setDigimons(data.content);
+        setIsLoading(false);
       }).catch((e) => { console.log(e) });
   }, [pageSize]);
   // Aqui é definido a lista de dependencias do [useEffect], no qual:
@@ -50,10 +53,11 @@ function Home() {
     <main>
       <Header />
       <Suspense fallback={<span>Carregando Digimons...</span>}>
-        <DataList {...digimons} />
+        <DigimonList {...digimons} />
       </Suspense>
       <div>
-        <button onClick={load}>Carregar mais digimons</button>
+        {isLoading ? <div className="lds-dual-ring"></div> :
+          <button onClick={load}>Carregar mais Digimons</button>}
       </div>
       <Link href="/api/hello">API - Call Example</Link>
     </main>
