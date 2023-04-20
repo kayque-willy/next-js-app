@@ -2,7 +2,7 @@
 "use client";
 
 import Link from "next/link";
-import { Suspense, useEffect, useState } from "react";
+import { Suspense, useEffect, useRef, useState } from "react";
 import { Header } from "./components/Header";
 import { DigimonList } from "./components/DigimonList";
 
@@ -24,6 +24,7 @@ function Home() {
       .then(data => {
         setDigimons(data.content);
         setIsLoading(false);
+        window.scrollTo(0, document.body.scrollHeight * 100);
       }).catch((e) => { console.log(e) });
   }, [pageSize]);
   // Aqui é definido a lista de dependencias do [useEffect], no qual:
@@ -45,6 +46,7 @@ function Home() {
   // ------------------------- Funções -------------------------
   // Carrega mais digimons
   async function load() {
+    console.log("load " + document.body.scrollHeight);
     setPage(pageSize + 10);
   }
 
