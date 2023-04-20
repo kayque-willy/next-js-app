@@ -36,6 +36,10 @@ h3 {
   color: #0025d9;
 }
 
+h4 {
+  font-weight: bold;
+}
+
 a {
   color: blue;
 }
@@ -84,6 +88,25 @@ img {
 
 a.card-link {
   min-width: 25%;
+}
+
+.card-content {
+  display: flex;
+  justify-content: center;
+}
+
+.card-content-bottom {
+  display: flex;
+  justify-content: center;
+}
+
+.card-img {
+  display: flex;
+  justify-content: center;
+}
+
+.card-description {
+  text-align: justify;
 }
 
 .header-search {

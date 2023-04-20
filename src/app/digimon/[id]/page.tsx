@@ -14,7 +14,6 @@ export default function DigimonPage({ params }: PageProps) {
     // ------------------------- Renderização da página -------------------------
     return (
         <div>
-            <h2>Digimon ID: {params.id}</h2>
             {/* @ts-expect-error */}
             <Digimon param={params.id} />
         </div>
