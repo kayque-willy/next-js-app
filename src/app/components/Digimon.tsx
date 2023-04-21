@@ -22,7 +22,7 @@ export async function Digimon({ param }: DigimonProps) {
                     <div className="return-link">
                         <Link className="button-return" href="/">Voltar</Link>
                     </div>
-                    <div className="card-img">
+                    <div className="card-img-page">
                         <img className="digimon-img" src={digimon.images[0].href} alt={digimon.name} width={20} height={20} />
                     </div>
                     <div className="digimon-card-content">

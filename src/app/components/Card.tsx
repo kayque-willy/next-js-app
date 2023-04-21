@@ -14,9 +14,9 @@ export function Card(digimon: CardProps) {
         <Link className="card-link" href={'digimon/' + digimon.id}>
             <article
                 className="digimon-card">
-                <h4>{digimon.id}</h4>
-                <img src={digimon.image} alt={digimon.name} width={100} height={100} />
+                <img className="card-img" src={digimon.image} alt={digimon.name} width={100} height={100} />
                 <h3>{digimon.name}{digimon.digimon}</h3>
+                <h4>{digimon.id}</h4>
             </article>
         </Link>
     )
