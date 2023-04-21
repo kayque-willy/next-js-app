@@ -1,3 +1,6 @@
+import Link from "next/link";
+import { Card } from "./Card";
+
 interface DigimonProps {
     param: string
 }
@@ -22,44 +25,49 @@ export async function Digimon({ param }: DigimonProps) {
     const digimon = await response.json();
     return (
         <section>
-            <article className="">
-                <h3 className="">{digimon.name}</h3>
-                <h5 className="">{digimon.id}</h5>
-                <h4>({digimon.releaseDate})</h4>
-                <div className="card-img">
-                    <img className="" src={digimon.images[0].href} alt={digimon.name} width={50} height={50} />
+            <article className="digimon-page">
+                <h3 className="digimon-title">{digimon.name}</h3>
+                <h5 className="digimon-subtitle">ID: {digimon.id}</h5>
+                <h4 className="digimon-subtitle">({digimon.releaseDate})</h4>
+                <div className="return-link">
+                    <Link className="button-return" href="/">Voltar</Link>
                 </div>
-                <div className="">
+                <div className="card-img">
+                    <img className="digimon-img" src={digimon.images[0].href} alt={digimon.name} width={20} height={20} />
+                </div>
+                <div className="digimon-card-content">
                     <p className="card-description">
-                        {digimon.descriptions[1].description}
+                        {digimon.descriptions.map((description: any) => {
+                            return (description.language === "en_us" && description.description)
+                        })}
                     </p>
                     <div className="card-content">
-                        <div className="">
-                            <h4 className="">Level</h4>
+                        <div className="card-columm">
+                            <h4 className="digimon-atribute">Level</h4>
                             <ul>
                                 {digimon.levels.map((level: any, index: number) => {
                                     return (<li key={index} className="">{level.level}</li>)
                                 })}
                             </ul>
                         </div>
-                        <div className="">
-                            <h4 className="">Attribute</h4>
+                        <div className="card-columm">
+                            <h4 className="digimon-atribute">Attribute</h4>
                             <ul>
                                 {digimon.attributes.map((attribute: any, index: number) => {
                                     return (<li key={index} className="">{attribute.attribute}</li>)
                                 })}
                             </ul>
                         </div>
-                        <div className="">
-                            <h4 className="">Type</h4>
+                        <div className="card-columm">
+                            <h4 className="digimon-atribute">Type</h4>
                             <ul>
                                 {digimon.types.map((type: any, index: number) => {
                                     return (<li key={index} className="">{type.type}</li>)
                                 })}
                             </ul>
                         </div>
-                        <div className="">
-                            <h4 className="">Skills</h4>
+                        <div className="card-columm">
+                            <h4 className="digimon-atribute">Skills</h4>
                             <ul>
                                 {digimon.skills.map((skill: any, index: number) => {
                                     return (<li key={index} className="">{skill.skill}</li>)
@@ -68,29 +76,50 @@ export async function Digimon({ param }: DigimonProps) {
                         </div>
                     </div>
                     <div className="card-content-mid">
-                        <h4 className="">Fields</h4>
-                        <ul>
+                        <h4 className="digimon-atribute">Fields</h4>
+                        <div className="fields">
                             {digimon.fields.map((field: any, index: number) => {
-                                return (<li key={index} className="">{field.field}</li>)
+                                return (
+                                    <>
+                                        <div key={index} className="field-item">
+                                            <div key={index} className="field-item-img">
+                                                <img className="level-img" src={"https://digimon-api.com/images/etc/fields/" + field.field + ".png"} alt={digimon.name} width={20} height={20} />
+                                            </div>
+                                            <div key={index} className="">
+                                                {field.field}
+                                            </div>
+                                        </div>
+                                    </>
+                                )
                             })}
-                        </ul>
+                        </div>
                     </div>
                     <div className="card-content-bottom">
-                        <div className="">
-                            <h4 className="">Prior Evolutions</h4>
+                        <div className="digimon-evolution">
+                            <h4 className="digimon-atribute">Prior Evolutions</h4>
                             <ul>
-                                {digimon.priorEvolutions.map((evolution: any, index: number) => {
-                                    return (<li key={index} className="">{evolution.digimon}</li>)
+                                {digimon.priorEvolutions.map((evolution: any) => {
+                                    return (
+                                        <Card className="card-evolution" key={evolution.id} {...evolution} />
+                                        // <li key={index} className="">
+                                        //     <img className="" src={evolution.image} alt={evolution.name} width={20} height={20} />
+                                        //     <span>{evolution.digimon}</span>
+                                        // </li>
+                                    )
                                 })}
                             </ul>
                         </div>
-                        <div className="">
-                            <h4 className="">Next Evolutions</h4>
-                            <ul>
-                                {digimon.nextEvolutions.map((evolution: any, index: number) => {
-                                    return (<li key={index} className="">{evolution.digimon}</li>)
-                                })}
-                            </ul>
+                        <div className="digimon-evolution">
+                            <h4 className="digimon-atribute">Next Evolutions</h4>
+                            {digimon.nextEvolutions.map((evolution: any) => {
+                                return (
+                                    <Card className="card-evolution" key={evolution.id} {...evolution} />
+                                    // <li key={index} className="">
+                                    //     <img className="" src={evolution.image} alt={evolution.name} width={20} height={20} />
+                                    //     {evolution.digimon}
+                                    // </li>
+                                )
+                            })}
                         </div>
                     </div>
                 </div>

@@ -12,7 +12,6 @@ export default function SearchLayout({
 }) {
   return (
     <div>
-      <Link href="/">Voltar</Link>
       {children}
     </div>
   )
