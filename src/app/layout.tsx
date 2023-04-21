@@ -15,7 +15,9 @@ export default function RootLayout({
       <body>
         <header className="header">
           <h1>Next.js - App</h1>
-          <h2>Digimon</h2>
+          <div className="header-img-container">
+            <img className="header-img" src="../assets/images/logo.png" width={50} height={50} />
+          </div>
         </header>
         {children}
         <footer> © 2023 - Author: <a href="https://github.com/kayque-willy">Kayque Oliveira</a></footer>
