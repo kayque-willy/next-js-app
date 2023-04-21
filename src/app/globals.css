@@ -68,6 +68,7 @@ img {
 }
 
 .digimon-card {
+  border-radius: 30px;
   border-color: black;
   margin: 3%;
   display: flex;
