@@ -6,20 +6,6 @@ interface DigimonProps {
 }
 
 // [λ  (Server)  server] - side renders at runtime uses [getInitialProps] or [getServerSideProps]
-// id: 7 [x]
-// name: Apocalymon [x]
-// xAntibody: false
-// images[1] [x]
-// levels[2] [x]
-// types[1] [x]
-// attributes[3] [x]
-// fields[3] [x]
-// releaseDate: 1999 [x]
-// descriptions[2] [x]
-// skills[4] [x]
-// priorEvolutions[21]
-// nextEvolutions[2]
-
 export async function Digimon({ param }: DigimonProps) {
     const response = await fetch('https://www.digi-api.com/api/v1/digimon/' + param);
     const digimon = await response.json();
@@ -101,10 +87,6 @@ export async function Digimon({ param }: DigimonProps) {
                                 {digimon.priorEvolutions.map((evolution: any) => {
                                     return (
                                         <Card className="card-evolution" key={evolution.id} {...evolution} />
-                                        // <li key={index} className="">
-                                        //     <img className="" src={evolution.image} alt={evolution.name} width={20} height={20} />
-                                        //     <span>{evolution.digimon}</span>
-                                        // </li>
                                     )
                                 })}
                             </ul>
@@ -114,10 +96,6 @@ export async function Digimon({ param }: DigimonProps) {
                             {digimon.nextEvolutions.map((evolution: any) => {
                                 return (
                                     <Card className="card-evolution" key={evolution.id} {...evolution} />
-                                    // <li key={index} className="">
-                                    //     <img className="" src={evolution.image} alt={evolution.name} width={20} height={20} />
-                                    //     {evolution.digimon}
-                                    // </li>
                                 )
                             })}
                         </div>
