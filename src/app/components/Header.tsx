@@ -3,7 +3,7 @@ export function Header() {
 
     return (
         <section className="header-search">
-            <form action="/search">
+            <form action="/digimon">
                 <fieldset>
                     <input className="input-search" type="search" name="search" placeholder="Procure o digimon pelo nome..."
                     />

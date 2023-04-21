@@ -2,9 +2,10 @@
 "use client";
 
 import Link from "next/link";
-import { Suspense, useEffect, useRef, useState } from "react";
+import { Suspense, useEffect, useState } from "react";
 import { Header } from "./components/Header";
 import { DigimonList } from "./components/DigimonList";
+import { Spinner } from "./components/Spinner";
 
 function Home() {
 
@@ -54,11 +55,13 @@ function Home() {
   return (
     <main>
       <Header />
-      <Suspense fallback={<span>Carregando Digimons...</span>}>
+      <Suspense fallback={<Spinner />}>
         <DigimonList {...digimons} />
       </Suspense>
       <div>
-        {isLoading ? <div className="lds-dual-ring"></div> :
+        {isLoading ?
+          <Spinner />
+          :
           <button onClick={load}>Carregar mais Digimons</button>}
       </div>
       <Link href="/api/hello">API - Call Example</Link>

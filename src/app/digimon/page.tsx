@@ -1,10 +1,7 @@
 import { Digimon } from "@/app/components/Digimon";
+import { NotFound } from "../components/NotFound";
 
 interface PageProps {
-    // Recupera os parâmetros digitados na URL
-    params: {
-        name: string
-    },
     // Recupera os parâmetros enviados por GET
     searchParams: {
         search: string;
@@ -12,14 +9,16 @@ interface PageProps {
 }
 
 // [λ  (Server)  server] - side renders at runtime uses [getInitialProps] or [getServerSideProps]
-export default function Search({ searchParams }: PageProps) {
+export default function DigimonPage({ searchParams }: PageProps) {
 
     // ------------------------- Renderização da página -------------------------
     return (
         <div>
-            <h2>Digimon Name: {searchParams.search}</h2>
-            {/* @ts-expect-error */}
-            <Digimon param={searchParams.search} />
+            {searchParams.search ?
+                /* @ts-expect-error */
+                <Digimon param={...searchParams.search} />
+                :
+                <NotFound />}
         </div>
     )
 }

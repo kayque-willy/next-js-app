@@ -1,5 +1,5 @@
-import { Digimon } from "@/app/components/Digimon"
-import Link from "next/link"
+import { Digimon } from "@/app/components/Digimon";
+import { NotFound } from "../../components/NotFound";
 
 interface PageProps {
     // Recupera os parâmetros digitados na URL
@@ -14,8 +14,13 @@ export default function DigimonPage({ params }: PageProps) {
     // ------------------------- Renderização da página -------------------------
     return (
         <div>
-            {/* @ts-expect-error */}
-            <Digimon param={params.id} />
+            <div>
+                {params.id ?
+                    /* @ts-expect-error */
+                    <Digimon param={...params.id} />
+                    :
+                    <NotFound />}
+            </div>
         </div>
     )
 }
